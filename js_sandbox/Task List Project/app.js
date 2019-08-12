@@ -247,3 +247,203 @@
 
 // console.log(val);
 
+//Event Listener
+
+// document.querySelector('.clear-tasks').addEventListener('click', function(e) {
+//   console.log('hello world');
+
+//   e.preventDefault();
+// })
+
+
+// document.querySelector('.clear-tasks').addEventListener('click', onClick);
+
+// function onClick(e){
+//   // console.log('clicked');
+
+
+//   let val;
+
+//   val = e;
+
+// // Event Target element
+// val = e.target;
+// val = e.target.id;
+// val = e.target.className;
+// val = e.target.classList;
+
+// e.target.innerText = 'Hello';
+
+// val = e.type;
+// val = e.timeStamp;
+
+// // Coords event relative to the window
+// val = e.clientY;
+// val = e.clientX;
+
+// // Coords relative to element
+// val = e.offsetY;
+// val = e.offsetX;
+
+//   console.log(val);
+// }
+
+
+// //  Mouse Events
+// const clearBtn = document.querySelector('.clear-tasks');
+// const card = document.querySelector('.card');
+// const heading = document.querySelector('h5');
+
+// // Click
+// clearBtn.addEventListener('click', runEvent);
+
+// // Double Click
+// clearBtn.addEventListener('dblclick', runEvent);
+
+// Mouse Down
+// clearBtn.addEventListener('mousedown', runEvent);
+
+// Mouse UP
+// clearBtn.addEventListener('mouseup', runEvent);
+
+// Mouse Enter
+// card.addEventListener('mouseenter', runEvent);
+
+// // Mouse Enter
+// card.addEventListener('mouseleave', runEvent);
+
+// // Mouse Over
+// card.addEventListener('mouseover', runEvent);
+
+// // Mouse out
+// card.addEventListener('mouseout', runEvent);
+
+// MouseMove
+// card.addEventListener('mousemove', runEvent);
+
+// // Event Handler
+// function runEvent(e) {
+//   console.log(`EVENT TYPE: ${e.type}`);
+
+
+// heading.textContent = `MouseX: ${e.offsetX} MouseY: ${e.offsetY}`;
+
+// document.body.style.backgroundColor = `rgb(${e.offsetX}, ${e.offsetY}, 128)`;
+// } 
+
+//  Keyboard Form Inputs
+
+// const form = document.querySelector('form');
+// const taskInput = document.getElementById('task');
+// const heading = document.querySelector('h5');
+
+// taskInput.value = '';
+
+// taskInput.addEventListener('keydown', runEvent);
+// taskInput.addEventListener('keyup', runEvent);
+// taskInput.addEventListener('keypress', runEvent);
+
+// // For Focus
+// taskInput.addEventListener('focus', runEvent);
+// taskInput.addEventListener('blur', runEvent); 
+
+// taskInput.addEventListener('cut', runEvent);
+// taskInput.addEventListener('paste', runEvent);
+
+
+// // Input Event
+// taskInput.addEventListener('input', runEvent);
+
+
+// form.addEventListener('submit', runEvent);
+
+// function runEvent(e) {
+//   console.log(`EVENT TYPE: ${e.type}`);
+
+  // console.log(e.target.value);
+
+  // heading.innerText = e.target.value;
+
+
+  // Get input value
+  // console.log(taskInput.value);
+
+  // e.preventDefault();
+// }
+
+
+
+// Event Bubbling
+// document.querySelector('.card-title').addEventListener('click', function(){
+//   console.log('card title');
+// });
+
+
+// document.querySelector('.card-content').addEventListener('click', function(){
+//   console.log('card content');
+// });
+
+// document.querySelector('.card').addEventListener('click', function(){
+//   console.log('card');
+// });
+
+// document.querySelector('.col').addEventListener('click', function(){
+//   console.log('col');
+// });
+
+// Event Delegation
+
+// const deItem = document.querySelector('.delete-item');
+
+// deItem.addEventListener('click', deleteItem);
+
+// document.body.addEventListener('click', deleteItem);
+
+// function deleteItem(e) {
+//   if(e.target.parentElement.className === 'delete-item secondary-content'){
+//   console.log('delete item');
+//   }
+// }
+
+// if(e.target.parentElement.classList.contains('delete-item')) {
+//   console.log('delete item');
+//   e.target.parentElement.parentElement.remove();
+//   }
+// }
+
+// Session Storage set local storage item
+// localStorage.setItem('name', 'John');
+// localStorage.setItem('age', '30');
+// // Set Session storage
+// // sessionStorage.setItem('name', 'John');
+
+// // remove from storage
+// // localStorageStorage.removeItem('name');
+
+// // Get from Storage
+// const name = localStorage.getItem('name');
+// const age = localStorage.getItem('age');
+
+// //Clear local storage
+// localStorage.clear();
+
+// console.log(name, age);
+
+document.querySelector('form').addEventListener('submit', function(e) {
+  const task = document.getElementById('task').value;
+
+  let tasks;
+
+  if(localStorage.getItem('tasks') === null){
+    tasks=[];
+  } else {
+    tasks = JSON.parse(localStorage.getItem('tasks'));
+  }
+
+  tasks.push(task);
+
+  localStorage.setItem('task', task);
+  alert('Task saved');
+
+  e.preventDefault();
+});
