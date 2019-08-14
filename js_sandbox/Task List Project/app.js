@@ -435,15 +435,22 @@ document.querySelector('form').addEventListener('submit', function(e) {
   let tasks;
 
   if(localStorage.getItem('tasks') === null){
-    tasks=[];
+    tasks = [];
   } else {
     tasks = JSON.parse(localStorage.getItem('tasks'));
   }
 
   tasks.push(task);
 
-  localStorage.setItem('task', task);
+  localStorage.setItem('tasks', JSON.stringify(tasks));
+
   alert('Task saved');
 
   e.preventDefault();
 });
+
+const tasks = JSON.parse(localStorage.getItem('tasks'));
+
+tasks.forEach(function(task){
+  console.log(task);
+})
